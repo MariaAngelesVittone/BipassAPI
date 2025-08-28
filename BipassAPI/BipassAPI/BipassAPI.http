@@ -1,0 +1,6 @@
+@BipassAPI_HostAddress = http://localhost:5137
+
+GET {{BipassAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
