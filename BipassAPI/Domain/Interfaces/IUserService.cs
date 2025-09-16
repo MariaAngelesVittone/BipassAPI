@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface IBaseRepository<T> where T : class
+    internal interface IUserService
     {
-        List<T> GetUser();
     }
 }

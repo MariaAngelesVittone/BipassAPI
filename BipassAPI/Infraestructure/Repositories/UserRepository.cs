@@ -1,6 +1,9 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infraestructure.Repositories
 {
@@ -13,6 +16,13 @@ namespace Infraestructure.Repositories
             _dbContext = dbContext;
         }
 
+        // Método GetUser() que devuelve una lista de usuarios
+        public List<User> GetUser()
+        {
+            return _dbContext.Users.ToList();
+        }
+
+        // Los otros métodos ya existentes
         public async Task<User?> GetUser(string email, string password)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);

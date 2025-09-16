@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Domain.Interfaces;
+using Application.Services;
 
 namespace BipassAPI.Controllers
 {
@@ -7,19 +8,17 @@ namespace BipassAPI.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly UserService _userService;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(UserService userService)
         {
-            _userRepository = userRepository;
+            _userService = userService;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var users = await _userRepository.GetAllAsync();
-        //    return Ok(users);
-        //}
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_userService.GetUser());
+        }
     }
 }
-
